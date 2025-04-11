@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gestión de Botones</title>
+
+    <!-- Bootstrap & Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" />
+
+    <!-- Estilos propios -->
+    <link rel="stylesheet" href="css/styles.css" />
+    <link rel="icon" type="image/png" href="images/favicon-32x32.png" sizes="32x32" />
+</head>
+
+<body>
+    <main class="container mt-4">
+        <!-- Contenedor de categorías o botones -->
+        <div class="boton-container" id="boton-container"></div>
+
+        <!-- Botón flotante para añadir -->
+        <div class="floating-button" onclick="openAddModal()" title="Añadir nuevo botón" aria-label="Añadir">+</div>
+
+        <!-- Controles de exportar/importar JSON -->
+        <div class="json-container d-flex gap-2 mt-3">
+            <button class="btn btn-secondary" onclick="exportButtons()">Exportar JSON</button>
+            <label class="btn btn-primary" title="Importar archivo JSON">
+                Importar JSON
+                <input type="file" id="importFile" style="display: none;" onchange="importButtons(event)" />
+            </label>
+        </div>
+    </main>
+
+    <!-- Modal para añadir/editar botones -->
+    <div class="modal fade" id="addModal" tabindex="-1" aria-labelledby="addModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="addModalLabel">Añadir / Editar Botón</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                </div>
+                <div class="modal-body">
+                    <input type="hidden" id="editIndex" />
+
+                    <!-- Selección de categoría -->
+                    <select id="categorySelect" class="form-control" onchange="updateCategoryFields()">
+                        <option value="">Nueva Categoría</option>
+                    </select>
+                    <input type="text" id="categoryName" class="form-control mt-2" placeholder="Nombre de la categoría" />
+
+                    <div class="input-group mt-2">
+                        <input type="text" id="categoryIcon" class="form-control" placeholder="Clase de icono de la categoría" />
+                        <button class="btn btn-outline-secondary" type="button" onclick="openIconModal('categoryIcon')">Seleccionar Icono</button>
+                    </div>
+
+                    <input type="color" id="categoryColor" class="form-control mt-2" title="Color de la categoría" />
+
+                    <hr />
+
+                    <!-- Datos del botón -->
+                    <input type="text" id="buttonText" class="form-control mt-2" placeholder="Texto del botón" />
+
+                    <div class="input-group mt-2">
+                        <input type="text" id="buttonIcon" class="form-control" placeholder="Clase de icono del botón" />
+                        <button class="btn btn-outline-secondary" type="button" onclick="openIconModal('buttonIcon')">Seleccionar Icono</button>
+                    </div>
+
+                    <input type="url" id="buttonLink" class="form-control mt-2" placeholder="URL del enlace" />
+                    <input type="color" id="buttonColor" class="form-control mt-2" title="Color del botón" />
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" onclick="saveButton()">Guardar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal para seleccionar iconos -->
+    <div class="modal fade" id="iconModal" tabindex="-1" aria-labelledby="iconModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="iconModalLabel">Seleccionar Icono</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="d-flex flex-wrap gap-2" id="iconList"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/script.js"></script>
+</body>
+</html>

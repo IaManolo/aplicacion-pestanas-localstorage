@@ -1,0 +1,193 @@
+/* ===============================
+   Variables globales
+================================== */
+:root {
+    --color-verde: #28a745;
+    --color-icono-hover: rgba(0, 0, 0, 0.1);
+    --color-editar: orange;
+    --color-eliminar: red;
+    --color-blanco: #ffffff;
+    --boton-hover-scale: 1.1;
+    --boton-radius: 10px;
+    --boton-ancho: 200px;
+    --boton-alto: 150px;
+}
+
+/* ===============================
+   Contenedor de botones/categorías
+================================== */
+.boton-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    margin-bottom: 80px;
+}
+
+/* ===============================
+   Botones individuales y categorías
+================================== */
+.boton,
+.categoria-boton {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--boton-radius);
+    cursor: pointer;
+    transition: transform 0.3s;
+    text-align: center;
+    padding: 15px;
+    color: white;
+    text-decoration: none;
+    min-width: 120px;
+    min-height: 120px;
+}
+
+.boton {
+    width: var(--boton-ancho);
+    height: var(--boton-alto);
+    background: var(--color-verde); /* Por si acaso no se sobreescribe */
+}
+
+.categoria-boton {
+    width: 220px;
+    height: 160px;
+    background: var(--color-categoria, #007bff);
+    font-size: 18px;
+}
+
+.boton:hover,
+.categoria-boton:hover {
+    transform: scale(var(--boton-hover-scale));
+}
+
+.boton i,
+.categoria-boton i {
+    font-size: 40px;
+    margin-bottom: 8px;
+}
+
+/* ===============================
+   Botón flotante
+================================== */
+.floating-button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: var(--color-verde);
+    color: white;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    cursor: pointer;
+    box-shadow: 0 4px 6px var(--color-icono-hover);
+}
+
+/* ===============================
+   Contenedor exportar/importar JSON
+================================== */
+.json-container {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+}
+
+/* ===============================
+   Botones de editar y eliminar
+================================== */
+.delete-btn,
+.edit-btn {
+    position: absolute;
+    top: 5px;
+    width: 25px;
+    height: 25px;
+    font-size: 16px;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    background: white;
+    color: black;
+}
+
+.delete-btn {
+    right: 5px;
+    background: var(--color-eliminar);
+    color: white;
+}
+
+.edit-btn {
+    left: 5px;
+    background: var(--color-editar);
+    color: white;
+}
+
+/* ===============================
+   Botón "Volver"
+================================== */
+.volver-btn {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 50px;
+    padding: 12px 25px;
+    font-size: 16px;
+    font-weight: bold;
+    z-index: 1000;
+}
+
+/* ===============================
+   Título de la categoría
+================================== */
+.categoria-titulo-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.categoria-titulo {
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+/* ===============================
+   Texto del botón
+================================== */
+.boton-texto {
+    margin-top: 8px;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+}
+
+/* ===============================
+   Responsive
+================================== */
+@media (max-width: 576px) {
+    .boton,
+    .categoria-boton {
+        width: 100%;
+        height: auto;
+    }
+
+    .floating-button,
+    .json-container {
+        width: 50px;
+        height: 50px;
+        font-size: 20px;
+    }
+
+    .volver-btn {
+        width: 90%;
+        left: 5%;
+        transform: none;
+    }
+}
