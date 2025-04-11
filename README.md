@@ -1,3 +1,5 @@
+![Vista previa de la aplicación](images/screenshot.png)
+
 # Aplicación Pestañas LocalStorage
 
 Aplicación web interactiva que permite organizar enlaces personalizados como si fueran pestañas, utilizando `localStorage` para guardar las configuraciones localmente. Cada categoría tiene un color, un icono y botones personalizables que puedes editar, eliminar o exportar/importar como JSON.
